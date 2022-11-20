@@ -1,0 +1,61 @@
+{
+  "columns": {
+    "item_count": {
+      "configurationData": {
+        "type": "Numeric",
+        "id": "item_count",
+        "required": true,
+        "title": "Item Count",
+        "description": "Number of time each item occurred in the list"
+      },
+      "data": [
+        [118,1168,55118,118,118],
+        [2895,62895,2895,2895],
+        [2895,82895,2895,2895],
+        [2895,22895,2895,2895],
+        [28395,2895,2895,2895],
+        [28945,62895,2895,2895],
+        [2895,2895,2895,2895],
+        [12895,28495,28295,12895]
+      ]
+    },
+    "month_name": {
+      "configurationData": {
+        "type": "Text",
+        "id": "month_name",
+        "required": true,
+        "title": "Months Title",
+        "description": "List of months in which the associated item occured in MMM-YYYY format e.g. Oct-2016"
+      },
+      "data": [
+        "Oct-2015",
+        "Nov-2015",
+        "Dec-2015",
+        "Sep-2015",
+        "Feb-2015",
+        "Jan-2015",
+        "Jan-2016",
+        "Nov-2016"
+      ]
+    },
+    "item_name": {
+      "configurationData": {
+        "type": "Text",
+        "id": "item_name",
+        "required": true,
+        "title": "Item Names",
+        "description": "List of top 10 most occurring items in the list"
+      },
+      "data": [
+        "Shared Documents",
+        "Shared Documents",
+        "Shared Documents",
+        "Learning Materials",
+        "Learning Materials",
+        "Learning Materials",
+        "Shared Documents",
+        "Learning Materials"
+      ]
+    }
+  }
+}

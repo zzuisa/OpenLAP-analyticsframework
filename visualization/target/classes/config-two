@@ -1,0 +1,36 @@
+{
+    "mapping":[
+        {
+            "outputPort":{
+                "type" : "Text",
+                "id" : "month_name",
+                "required" : true,
+                "title" : "Item Names",
+                "description" : "List of top 10 most occurring items in the list"
+            },
+            "inputPort":{
+                "type":"Text",
+                "id":"xAxisStrings",
+                "required":true,
+                "title":"X-Axis Items",
+                "description":"List of items to be displayed on X-Axis of the graph"
+            }
+        },
+        {
+            "outputPort":{
+                "type" : "Numeric",
+                "id" : "item_count",
+                "required" : true,
+                "title" : "Item Count",
+                "description" : "Number of time each item occurred in the list"
+            },
+            "inputPort":{
+                "type":"Numeric",
+                "id":"yAxisValues",
+                "required":true,
+                "title":"Y-Axis Values",
+                "description":"List of items to be displayed on Y-Axis of the graph"
+            }
+        }
+    ]
+}
