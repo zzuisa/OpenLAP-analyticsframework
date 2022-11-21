@@ -8,7 +8,7 @@ import com.openlap.template.VisualizationCodeGenerator;
 import com.openlap.exceptions.VisualizationCodeGenerationException;
 import com.openlap.template.model.TransformedData;
 import com.openlap.exceptions.OpenLAPDataColumnException;
-import openlap.visualizer.C3.Transformers.ObjectList;
+import com.openlap.visualizer.C3.Transformers.ObjectList;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -113,7 +113,7 @@ public class MultiLine extends VisualizationCodeGenerator {
 
         stringBuilder.append("axis: { x: { type: 'category', categories: [");
         if(labels.length()>0)
-            stringBuilder.append(labels.substring(0, labels.length()-1));
+            stringBuilder.append(labels, 0, labels.length()-1);
         stringBuilder.append("] } }");
 
         stringBuilder.append("});");

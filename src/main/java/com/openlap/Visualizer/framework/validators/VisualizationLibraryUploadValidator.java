@@ -32,12 +32,8 @@ public class VisualizationLibraryUploadValidator {
 					//lets go deeper into the visualization methods definition
 					if (visualizationLibrary.getVisualizationTypes().size() > 0) {
 						for (VisualizationType visualizationType : visualizationLibrary.getVisualizationTypes()) {
-							if (visualizationType.getName() != null && visualizationType.getImplementingClass() != null
-									&& !visualizationType.getName().isEmpty() && !visualizationType.getImplementingClass().isEmpty()) {
-								return false; // do not include in the filtered list
-							} else {
-								return true;
-							}
+                return visualizationType.getName() == null || visualizationType.getImplementingClass() == null
+                        || visualizationType.getName().isEmpty() || visualizationType.getImplementingClass().isEmpty(); // do not include in the filtered list
 						}
 					} else {
 						return true;

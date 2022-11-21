@@ -1,4 +1,4 @@
-package openlap.visualizer.C3.Transformers;
+package com.openlap.visualizer.C3.Transformers;
 
 import com.openlap.dataset.OpenLAPDataColumn;
 import com.openlap.dataset.OpenLAPDataSet;
@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * Created by Arham Muslim
- * on 13-Oct-16.
+ Created by Arham Muslim
+ on 13-Oct-16.
  */
 public class ObjectList implements DataTransformer {
     TransformedData<LinkedHashMap<String, Object[]>> transformedData = new TransformedData<LinkedHashMap<String, Object[]>>();
@@ -39,20 +40,26 @@ public class ObjectList implements DataTransformer {
 
 
         //Adding first row as the header with group column item names
-        transformedData.getData().put("Header",new Object[dataArraySize]);
+        transformedData.getData().put("Header", new Object[dataArraySize]);
         for (int i = 0; i < uniqueGroupItems.size(); i++)
             transformedData.getData().get("Header")[i] = uniqueGroupItems.get(i);
 
         //Adding the data
-        if(labels != null) {
+        if (labels != null) {
             for (int i = 0; i < labels.size(); i++) {
-                if(!transformedData.getData().containsKey(labels.get(i))) {
+                if (!transformedData.getData().containsKey(labels.get(i))) {
                     Object[] emptyArray = new Object[dataArraySize];
                     Arrays.fill(emptyArray, 0);
                     transformedData.getData().put(labels.get(i), emptyArray);
+                    transformedData.getData().put(labels.get(i), Arrays.asList(Arrays.stream(
+                            String.valueOf(frequencies.get(i)).split(","))
+                            .mapToDouble(Double::parseDouble)
+                            .boxed()
+                            .collect(Collectors.toList()))
+                        .toArray());
                 }
 
-                transformedData.getData().get(labels.get(i))[uniqueGroupItems.indexOf(groupBy.get(i))] = frequencies.get(i);
+//                transformedData.getData().get(labels.get(i))[uniqueGroupItems.indexOf(groupBy.get(i))] = frequencies.get(i);
             }
         }
 

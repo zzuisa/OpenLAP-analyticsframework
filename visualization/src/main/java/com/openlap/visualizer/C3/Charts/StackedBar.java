@@ -8,11 +8,12 @@ import com.openlap.template.DataTransformer;
 import com.openlap.template.VisualizationCodeGenerator;
 import com.openlap.exceptions.VisualizationCodeGenerationException;
 import com.openlap.template.model.TransformedData;
+import com.openlap.visualizer.C3.Transformers.ObjectList;
 import javafx.util.Pair;
-import openlap.visualizer.C3.Transformers.ObjectList;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Arham Muslim
@@ -80,33 +81,36 @@ public class StackedBar extends VisualizationCodeGenerator {
         stringBuilder.append("bindto: '#chartdiv_" + postfix + "', ");
         stringBuilder.append("size: { width: (width_" + postfix + " - 20), height: (height_" + postfix + " - 20) }, ");
         stringBuilder.append("legend: { position: 'inset' }, ");
-        stringBuilder.append("data: {rows: [ ");
+        stringBuilder.append("data: {columns: [ ");
 
         String labels = "";
         String groupBy = "";
         if(datalist.size()>1) {
-            stringBuilder.append("[");
-
+//            stringBuilder.append("[");
+//
             for (int j = 0; j < rowDataLength; j++) {
-                stringBuilder.append("'" + datalist.get(keySet[0])[j] + "',");
+//                stringBuilder.append("'" + datalist.get(keySet[0])[j] + "',");
                 groupBy += "'" + datalist.get(keySet[0])[j] + "',";
             }
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-            stringBuilder.append("],");
+//            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+//            stringBuilder.append("],");
 
             for (int i = 1; i < keySet.length; i++) {
                 labels += "'" + keySet[i] + "',";
                 //stringBuilder.append("['" + keySet[i] + "'");
                 stringBuilder.append("[");
+                rowDataLength = datalist.get(keySet[i]).length;
                 for (int j = 0; j < rowDataLength; j++) {
-                    Object val = datalist.get(keySet[i])[j];
+                    List val = ((ArrayList) datalist.get(keySet[i])[j]);
+                    String o = (String) val.stream().map(Object::toString)
+                            .collect(Collectors.joining(", "));
+                    String n = String.format("'%s', %s",datalist.get(keySet[0])[i-1],o);
                     if (val == null)
-                        val = 0;
-                    stringBuilder.append(val + ",");
+                        val = new ArrayList();
+                    stringBuilder.append(n + "],");
                 }
-
                 stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-                stringBuilder.append("],");
+                stringBuilder.append(",");
             }
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }

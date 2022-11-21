@@ -19,7 +19,7 @@ import java.io.InputStream;
 public class DataTransformerFactoryImpl implements DataTransformerFactory {
 
 	private JclObjectFactory jclObjectFactory;
-	private JarClassLoader jarClassLoader;
+	private final JarClassLoader jarClassLoader;
 
 	public DataTransformerFactoryImpl(String locationOfJar) {
 		jarClassLoader = new JarClassLoader();

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class OpenLAPDataSet {
     // Map of the columns with the String ID. The string is taken from the OpenLAPColumnConfigData of the column.
-    private HashMap<String, OpenLAPDataColumn> columns;
+    private final HashMap<String, OpenLAPDataColumn> columns;
 
     /**
      * Empty constructor
@@ -158,10 +158,7 @@ public class OpenLAPDataSet {
                 }
             }
         }
-        if (columnsSecondInstance.size() == 0)
-            return true;
-        else
-            return false;
+        return columnsSecondInstance.size() == 0;
 
     }
 

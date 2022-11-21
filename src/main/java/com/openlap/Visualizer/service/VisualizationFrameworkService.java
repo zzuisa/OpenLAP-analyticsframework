@@ -122,7 +122,7 @@ public class VisualizationFrameworkService {
 					if (!fileManager.fileExists(fileName.toString()))
 						savedFilePath = fileManager.saveJarFile(fileName.toString(), jarFile);
 					else
-						throw new VisualizationLibraryUploadException("The file being uploaded : " + fileName.toString() + "  already exists.");
+						throw new VisualizationLibraryUploadException("The file being uploaded : " + fileName + "  already exists.");
 				} else {
 					savedFilePath = fileManager.saveJarFile("", jarFile);
 				}

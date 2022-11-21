@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public interface CsvToJsonService {
 
-	public MappingIterator<XapiStatement> readStatementsFromCsv(String InptFile);
+	MappingIterator<XapiStatement> readStatementsFromCsv(String InptFile);
 
-	public JSONArray convertCsvStatementsToXapiStatements(MappingIterator<XapiStatement> csvStatements) throws IOException;
+	JSONArray convertCsvStatementsToXapiStatements(MappingIterator<XapiStatement> csvStatements) throws IOException;
 }

@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -36,7 +37,7 @@ public class Utils {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("Encounter an issue while parsing jar: " + e.toString());
+			System.out.println("Encounter an issue while parsing jar: " + e);
 		}
 		return listofClasses;
 	}
@@ -71,7 +72,7 @@ public class Utils {
 
 		HttpEntity<String> entity = new HttpEntity<String>(jsonContent, headers);
 
-		restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
+		restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
 
 		T result = restTemplate.postForObject(url, entity, type);
 
@@ -84,7 +85,7 @@ public class Utils {
 		con.setRequestMethod("PUT");
 		con.setRequestProperty("Content-Type", "application/json");
 		con.setRequestProperty("Accept", "application/json");
-		con.setRequestProperty("Content-Length", "" + Integer.toString(jsonContent.getBytes().length));
+		con.setRequestProperty("Content-Length", "" + jsonContent.getBytes().length);
 
 		con.setUseCaches(false);
 		con.setDoInput(true);
@@ -119,11 +120,7 @@ public class Utils {
 
 		String result = null;
 
-		try {
-			result = URLDecoder.decode(s, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			result = s;
-		}
+		result = URLDecoder.decode(s, StandardCharsets.UTF_8);
 
 		return result;
 	}
@@ -131,17 +128,13 @@ public class Utils {
 	public static String encodeURIComponent(String s) {
 		String result = null;
 
-		try {
-			result = URLEncoder.encode(s, "UTF-8")
-					.replaceAll("\\%28", "(")
-					.replaceAll("\\%29", ")")
-					.replaceAll("\\+", "%20")
-					.replaceAll("\\%27", "'")
-					.replaceAll("\\%21", "!")
-					.replaceAll("\\%7E", "~");
-		} catch (UnsupportedEncodingException e) {
-			result = s;
-		}
+		result = URLEncoder.encode(s, StandardCharsets.UTF_8)
+				.replaceAll("\\%28", "(")
+				.replaceAll("\\%29", ")")
+				.replaceAll("\\+", "%20")
+				.replaceAll("\\%27", "'")
+				.replaceAll("\\%21", "!")
+				.replaceAll("\\%7E", "~");
 		return result;
 	}
 }

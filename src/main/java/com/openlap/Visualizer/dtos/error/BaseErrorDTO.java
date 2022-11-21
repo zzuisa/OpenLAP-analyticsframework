@@ -13,7 +13,7 @@ public class BaseErrorDTO {
 	private String errorMessage; // a human readable message summarizing the cause of the error
 	private String moreInfoURL; // a url pointing to more information on the error
 	private String apiVersionNumber; // representing the current version number of the API that the System is running on
-	private String timestamp; // current timestamp
+	private final String timestamp; // current timestamp
 
 	protected BaseErrorDTO(String errorMessage, String moreInfoURL, String apiVersionNumber) {
 		this.errorMessage = errorMessage;

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class BadRequestException extends RuntimeException {
 
 	private static final Logger log = LoggerFactory.getLogger(OpenLAPAnalyticsFramework.class);
-	private String errorCode;
+	private final String errorCode;
 
 	public BadRequestException(String message, String errorCode) {
 		super(message);

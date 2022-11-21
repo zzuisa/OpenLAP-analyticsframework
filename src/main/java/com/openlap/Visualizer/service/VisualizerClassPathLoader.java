@@ -15,8 +15,8 @@ import org.xeustechnologies.jcl.proxy.ProxyProviderFactory;
  */
 public class VisualizerClassPathLoader {
 
-	private JarClassLoader jcl;
-	private JclObjectFactory factory;
+	private final JarClassLoader jcl;
+	private final JclObjectFactory factory;
 
 	/**
 	 * Standard constructor that prepares this classpath loader to use the given JAR location to load classes from.

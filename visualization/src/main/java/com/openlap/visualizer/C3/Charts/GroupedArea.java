@@ -8,8 +8,8 @@ import com.openlap.template.VisualizationCodeGenerator;
 import com.openlap.exceptions.VisualizationCodeGenerationException;
 import com.openlap.template.model.TransformedData;
 import com.openlap.exceptions.OpenLAPDataColumnException;
+import com.openlap.visualizer.C3.Transformers.ObjectList;
 import javafx.util.Pair;
-import openlap.visualizer.C3.Transformers.ObjectList;
 
 import java.util.Date;
 import java.util.LinkedHashMap;

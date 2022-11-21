@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * It is name so because the SENDING macro component "outputs" data to the RECEIVING macro component "inputs".
  */
 public class OpenLAPPortConfig {
-    private ArrayList<OpenLAPPortMapping> mapping;
+    private final ArrayList<OpenLAPPortMapping> mapping;
 
     /**
      * Empty constructor
