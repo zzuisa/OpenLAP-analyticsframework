@@ -11,6 +11,7 @@ import com.openlap.template.DataTransformer;
 import com.openlap.template.VisualizationCodeGenerator;
 import com.openlap.visualizer.C3.Charts.Bar;
 import com.openlap.visualizer.C3.Charts.GroupedBar;
+import com.openlap.visualizer.C3.Charts.ScatterPlot;
 import com.openlap.visualizer.C3.Charts.StackedBar;
 import org.apache.tomcat.jni.OS;
 
@@ -24,8 +25,10 @@ import java.util.Map;
  * on 07-Sep-16.
  */
 public class visualization_testing {
-    public static final String DATASET_RESOURCE_PATH = "/data-num-group.json";
-    public static final String CONFIGURATION_RESOURCE_PATH = "/config-group";
+    public static final String DATASET_RESOURCE_PATH = "/data-kmeans.json";
+    public static final String CONFIGURATION_RESOURCE_PATH = "/config-kmeans";
+//    public static final String DATASET_RESOURCE_PATH = "/data-num-group.json";
+//    public static final String CONFIGURATION_RESOURCE_PATH = "/config-group";
 
     public static void main(String[] args) {
         visualization_testing context = new visualization_testing();
@@ -38,7 +41,7 @@ public class visualization_testing {
             OpenLAPDataSet inputDataSet = mapper.readValue(context.loadResourceFile(DATASET_RESOURCE_PATH),OpenLAPDataSet.class);
             OpenLAPPortConfig inputConfiguration = mapper.readValue(context.loadResourceFile(CONFIGURATION_RESOURCE_PATH), OpenLAPPortConfig.class);
 
-            VisualizationCodeGenerator codeGenerator = new StackedBar();
+            VisualizationCodeGenerator codeGenerator = new ScatterPlot();
 
             Map<String, Object> additionalParams = new HashMap<String, Object>();
             additionalParams.put("width",700);

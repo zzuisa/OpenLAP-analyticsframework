@@ -2,14 +2,14 @@
     "mapping":[
         {
             "outputPort":{
-                "type" : "Text",
-                "id" : "month_name",
+                "type" : "Numeric",
+                "id" : "attribute_1",
                 "required" : true,
                 "title" : "Item Names",
                 "description" : "List of top 10 most occurring items in the list"
             },
             "inputPort":{
-                "type":"Text",
+                "type":"Numeric",
                 "id":"xAxisStrings",
                 "required":true,
                 "title":"X-Axis Items",
@@ -19,7 +19,7 @@
         {
             "outputPort":{
                 "type" : "Numeric",
-                "id" : "item_count",
+                "id" : "attribute_2",
                 "required" : true,
                 "title" : "Item Count",
                 "description" : "Number of time each item occurred in the list"
@@ -35,7 +35,7 @@
         {
             "outputPort":{
                 "type" : "Text",
-                "id" : "gb",
+                "id" : "cluster_name",
                 "required" : true,
                 "title" : "Item Count",
                 "description" : "Number of time each item occurred in the list"

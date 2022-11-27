@@ -50,8 +50,8 @@ public class ObjectList implements DataTransformer {
                 if (!transformedData.getData().containsKey(labels.get(i))) {
                     Object[] emptyArray = new Object[dataArraySize];
                     Arrays.fill(emptyArray, 0);
-                    transformedData.getData().put(labels.get(i), emptyArray);
-                    transformedData.getData().put(labels.get(i), Arrays.asList(Arrays.stream(
+                    transformedData.getData().put(String.valueOf(labels.get(i)), emptyArray);
+                    transformedData.getData().put(String.valueOf(labels.get(i)), Arrays.asList(Arrays.stream(
                             String.valueOf(frequencies.get(i)).split(","))
                             .mapToDouble(Double::parseDouble)
                             .boxed()

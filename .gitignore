@@ -4,7 +4,8 @@
 .classpath
 .project
 .vscode
-
-/target/
+*.class
+*/target/
 /ObjectStore/
 /bin/
+/visualization/target/
